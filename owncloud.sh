@@ -15,10 +15,7 @@ echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" \
 apt update
 
 # Install Apache, PHP 7.4, database, dan modul lengkap OwnCloud
-apt install -y apache2 php7.4 mariadb-server imagemagick certbot python3-certbot-apache \
-smbclient redis-server unzip rsync libapache2-mod-php7.4 \
-php7.4-{intl,mysql,mbstring,imagick,igbinary,gmp,bcmath,curl,gd,zip,imap,ldap,bz2,ssh2,common,json,xml,dev,apcu,redis} \
-libsmbclient-dev php-pear php-phpseclib
+apt install -y apache2 php7.4 mariadb-server imagemagick certbot python3-certbot-apache smbclient redis-server unzip rsync libapache2-mod-php7.4 php7.4-{intl,mysql,mbstring,imagick,igbinary,gmp,bcmath,curl,gd,zip,imap,ldap,bz2,ssh2,common,json,xml,dev,apcu,redis} libsmbclient-dev php-pear php-phpseclib
 
 # Aktifkan modul Apache yang dibutuhkan OwnCloud
 a2enmod dir env headers mime rewrite setenvif ssl
@@ -48,4 +45,5 @@ systemctl restart apache2
 '
 
 echo "=== Instalasi selesai, lanjutkan konfigurasi database dan Apache ==="
+
 
