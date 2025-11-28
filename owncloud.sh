@@ -1,25 +1,32 @@
 #!/bin/bash
 
-echo "Jalankan file ini dengan user root!!";
+echo "Jalankan file ini dengan user root!!"
 
-apt update && apt upgrade
+# Update dan upgrade sistem
+apt update && apt upgrade -y
 
-apt install sudo 
-
-sudo apt install zip apt-transport-https lsb-release ca-certificates wget
+# Install tools dasar dan repository PHP
+apt install -y sudo zip apt-transport-https lsb-release ca-certificates wget gnupg
 
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-
-echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 
 apt update
 
-apt install -y apache2 php7.4 mariadb-server imagemagick certbot python3-certbot-apache smbclient redis-server unzip rsync libapache2-mod-php7.4 php7.4-{intl,mysql,mbstring,imagick,igbinary,gmp,bcmath,curl,gd,zip,imap,ldap,bz2,ssh2,common,json,xml,dev,apcu,redis} libsmbclient-dev php-pear php-phpseclib
+# Install Apache, PHP 7.4, database, dan modul lengkap OwnCloud
+apt install -y apache2 php7.4 mariadb-server imagemagick certbot python3-certbot-apache \
+smbclient redis-server unzip rsync libapache2-mod-php7.4 \
+php7.4-{intl,mysql,mbstring,imagick,igbinary,gmp,bcmath,curl,gd,zip,imap,ldap,bz2,ssh2,common,json,xml,dev,apcu,redis} \
+libsmbclient-dev php-pear php-phpseclib
 
-a2enmod dir env headers mime rewrite setenvif
+# Aktifkan modul Apache yang dibutuhkan OwnCloud
+a2enmod dir env headers mime rewrite setenvif ssl
 systemctl restart apache2
 
-:'
+# Hint VirtualHost (tertulis tapi tidak dieksekusi)
+: '
+
+================= HINT KONFIGURASI VIRTUALHOST =================
 
 <VirtualHost *:80>
     ServerName your-domain.com
@@ -35,5 +42,7 @@ systemctl restart apache2
     CustomLog ${APACHE_LOG_DIR}/owncloud_access.log combined
 </VirtualHost>
 
-
+================================================================
 '
+
+echo "=== Instalasi selesai, lanjutkan konfigurasi database dan Apache ==="
