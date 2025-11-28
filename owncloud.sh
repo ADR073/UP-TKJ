@@ -6,7 +6,7 @@ echo "Jalankan file ini dengan user root!!"
 apt update && apt upgrade -y
 
 # Install tools dasar dan repository PHP
-apt install -y sudo zip apt-transport-https lsb-release ca-certificates wget gnupg
+apt install -y sudo zip apt-transport-https lsb-release ca-certificates wget gnupg apache2 
 
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
@@ -46,3 +46,4 @@ systemctl restart apache2
 '
 
 echo "=== Instalasi selesai, lanjutkan konfigurasi database dan Apache ==="
+
