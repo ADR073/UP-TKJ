@@ -9,4 +9,4 @@ apt install git -y
 
 git clone https://github.com/ADR073/UP-TKJ.git
 
-bash ./owncloud.sh
+bash ./UP-TKJ/owncloud.sh
