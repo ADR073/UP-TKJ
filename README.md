@@ -11,7 +11,7 @@ apt update && apt upgrade -y
 apt install bind9 -y
 
 
-cd /etc/bind9
+cd /etc/bind
 
 cp db.127 db.192
 
