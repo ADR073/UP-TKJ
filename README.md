@@ -3,21 +3,32 @@
 # SSH
 ssh root@ipaddress
 
+
 apt update && apt upgrade -y
+
 
 # DNS
 apt install bind9 -y
 
+
 cd /etc/bind9
+
 cp db.127 db.192
+
 cp db.local db.(nama)
 
+
 nano db.192
+
 nano db.(nama)
+
 nano named.default-zones
 
+
 systemctl restart bind9
+
 nano /etc/resolv.conf
+
 
 # owncloud.sh
 Berisi bash untuk bahan dari Ujian Praktik TKJ
