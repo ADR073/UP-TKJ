@@ -78,7 +78,7 @@ wget https://download.owncloud.com/server/stable/owncloud-complete-20251023.tar.
 
 tar -xf ./owncloud-complete-20251023.tar.bz2
 
-chown -R www:data-www:data ./owncloud/
+chown -R www-data:www-data ./owncloud/
 
 chmod -R 755 ./owncloud/
 
