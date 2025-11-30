@@ -1,13 +1,13 @@
 # UP-TKJ
 
-# SSH
+## SSH
 ssh root@ipaddress
 
 
 apt update && apt upgrade -y
 
 
-# DNS
+## DNS
 apt install bind9 -y
 
 
@@ -23,6 +23,9 @@ nano db.192
 nano db.(nama)
 
 nano named.default-zones
+
+
+Isi konfigurasi file dapat dilihat pada file db.192, db.andra, dan named.conf.default-zones yang ada pada github ini
 
 
 systemctl restart bind9
